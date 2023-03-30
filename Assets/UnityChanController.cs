@@ -10,6 +10,10 @@ public class UnityChanController : MonoBehaviour
     private Rigidbody myRigidbody;
     //前方向の速度（追加）
     private float velocityZ = 16f;
+    //横方向の速度（追加）
+    private float velocityX = 10f;
+    //左右の移動できる範囲（追加）
+    private float movableRange = 3.4f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +32,22 @@ public class UnityChanController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Unityちゃんに速度を与える（追加）
-        this.myRigidbody.velocity = new Vector3(0, 0, this.velocityZ);
+        //横方向の入力による速度（追加）
+        float inputVelocityX = 0;
+
+        //Unityちゃんを矢印キーまたはボタンに応じて左右に移動させる（追加）
+        if (Input.GetKey (KeyCode.LeftArrow) && -this.movableRange < this.transform.position.x)
+        {
+            //左方向への速度を代入（追加）
+            inputVelocityX = -this.velocityX;
+        }
+        else if (Input.GetKey (KeyCode.RightArrow) && this.transform.position.x < this.movableRange)
+        {
+            //右方向への速度を代入（追加）
+            inputVelocityX = this.velocityX;
+        }
+
+        //Unityちゃんに速度を与える（変更）
+        this.myRigidbody.velocity = new Vector3(inputVelocityX, 0, this.velocityZ);
     }
 }
