@@ -55,7 +55,7 @@ public class ItemGenerator : MonoBehaviour
                     {
                         //é‘Çê∂ê¨
                         GameObject car = Instantiate(carPrefab);
-                        car.transform.position = new Vector3 (posRange * j, car.transform.position.y, i + offsetZ)
+                        car.transform.position = new Vector3(posRange * j, car.transform.position.y, i + offsetZ);
                     }
                 }
             }
