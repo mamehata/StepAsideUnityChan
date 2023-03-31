@@ -103,5 +103,11 @@ public class UnityChanController : MonoBehaviour
         {
             this.isEnd = true;
         }
+        //コインに衝突した場合（追加）
+        else if (other.gameObject.CompareTag("CoinTag"))
+        {
+            //接触したコインのオブジェクトを破棄（追加）
+            Destroy(other.gameObject);
+        }
     }
 }
